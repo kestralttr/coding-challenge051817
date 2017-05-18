@@ -1,6 +1,31 @@
 
+body {
+  background-color: #e0e0e0;
+}
+
+.App {
+  position: relative;
+}
+
 h1 {
   text-align: center;
+  box-sizing: padding-box;
+}
+
+.confirm-button {
+  position: fixed;
+  bottom: 25px;
+  z-index:50;
+
+}
+
+.UserList {
+  position: fixed;
+  top:80px;
+  bottom:50px;
+  overflow-y: auto;
+  left:0;
+  right:0;
 }
 
 .UserListItem {
