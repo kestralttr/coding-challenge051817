@@ -9,17 +9,6 @@ class UserList extends Component {
     this.state = {
 
     };
-    this.renderInitialUsers = this.renderInitialUsers.bind(this);
-  }
-
-  renderInitialUsers() {
-    if(this.state.users) {
-      this.state.users.forEach(function(user) {
-        return(
-          <li>hello</li>
-        );
-      });
-    }
   }
 
   componentDidMount() {
@@ -37,17 +26,31 @@ class UserList extends Component {
   }
 
   render() {
+
+    // callback for sorting users alphabetically by name
+    function compare(a,b) {
+      if((a.name[0]).toLowerCase() < (b.name[0]).toLowerCase()) {
+        return -1;
+      }
+      if((a.name[0]).toLowerCase() > (b.name[0]).toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    }
+
     let userItems;
+    let sortedUserItems;
     if(this.state.users) {
-      userItems = this.state.users.map(function(user) {
+      userItems = this.state.users.sort(compare);
+      sortedUserItems = userItems.map(function(user) {
         return(
-          <UserListItem name={user.name} />
+          <UserListItem key={user.id} name={user.name} email={user.email} />
         );
       });
     }
     return (
       <div className="UserList">
-        {userItems}
+        {sortedUserItems}
       </div>
     );
   }

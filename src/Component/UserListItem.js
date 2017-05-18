@@ -4,10 +4,19 @@ import React, { Component } from 'react';
 class UserListItem extends Component {
 
   render() {
-    console.log("props: ",this.props);
     return (
       <div className="UserListItem">
-        {this.props.name}
+        <div className="checkbox-section">
+          <input className="checkbox" type="checkbox"/>
+        </div>
+        <div className="text-section">
+          <div className="name-section">
+            {this.props.name}
+          </div>
+          <div className="email-section">
+            {this.props.email}
+          </div>
+        </div>
       </div>
     );
   }
