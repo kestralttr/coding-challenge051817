@@ -12,15 +12,18 @@ class UserList extends Component {
   }
 
   componentDidMount() {
+    let url = "https://jsonplaceholder.typicode.com/users";
     $.ajax({
       method:"GET",
-      url:"https://jsonplaceholder.typicode.com/users",
+      url: url,
       success: (data) => {
         this.setState({
           users:data
-        }, () => {
-
         });
+      },
+      error: (error) => {
+        console.log(error);
+        alert("An error occurred accessing the API at the following URL: " + url);
       }
     });
   }

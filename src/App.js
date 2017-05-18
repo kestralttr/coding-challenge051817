@@ -15,8 +15,8 @@ class App extends Component {
 
   handleClick() {
     let names = [];
-    let checkedBoxes = $(".checkbox:checked").parent().parent().find(".name-section");
-    Array.prototype.forEach.call(checkedBoxes,function(el) {
+    let checkedNameSections = $(".checkbox:checked").parent().parent().find(".name-section");
+    Array.prototype.forEach.call(checkedNameSections,function(el) {
       names.push(el.innerHTML);
     });
     console.log(names);
@@ -26,6 +26,11 @@ class App extends Component {
     return (
       <div className="App">
         <h1>User List</h1>
+        <div className="results-container">
+          <div className="results">
+
+          </div>
+        </div>
         <UserList />
         <button className="confirm-button" onClick={this.handleClick}>Confirm</button>
       </div>
