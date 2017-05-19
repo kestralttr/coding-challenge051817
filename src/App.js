@@ -11,6 +11,8 @@ class App extends Component {
 
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleUncheckAll = this.handleUncheckAll.bind(this);
   }
 
   handleClick() {
@@ -18,8 +20,24 @@ class App extends Component {
     let checkedNameSections = $(".checkbox:checked").parent().parent().find(".name-section");
     Array.prototype.forEach.call(checkedNameSections,function(el) {
       names.push(el.innerHTML);
+      $(".results").append(`<p>${el.innerHTML}</p>`);
     });
-    console.log(names);
+
+    $(".results-container").css("display","block");
+    $(".results-container").fadeTo(250, 1, function() {
+        // Animation complete.
+      });
+  }
+
+  handleClose(e) {
+    $(".results-container").fadeTo(250, 0, function() {
+        $(".results-container").css("display","none");
+        $(".results").empty();
+      });
+  }
+
+  handleUncheckAll(e) {
+    $(".checkbox").prop("checked",false);
   }
 
   render() {
@@ -27,12 +45,15 @@ class App extends Component {
       <div className="App">
         <h1>User List</h1>
         <div className="results-container">
+          <div className="results-close-area" onClick={this.handleClose}></div>
+          <h2>Selected Users</h2>
           <div className="results">
 
           </div>
         </div>
         <UserList />
         <button className="confirm-button" onClick={this.handleClick}>Confirm</button>
+        <button className="uncheckall-button" onClick={this.handleUncheckAll}>Uncheck All</button>
       </div>
     );
   }

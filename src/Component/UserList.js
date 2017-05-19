@@ -22,7 +22,6 @@ class UserList extends Component {
         });
       },
       error: (error) => {
-        console.log(error);
         alert("An error occurred accessing the API at the following URL: " + url);
       }
     });
