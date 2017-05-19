@@ -17,6 +17,7 @@ class App extends Component {
   }
 
   handleClick() {
+    // pulls and displays selected names from state in modal
     let names = [];
     let checkedNameSections = $(".checkbox:checked").parent().parent().find(".name-section");
     Array.prototype.forEach.call(checkedNameSections,function(el) {
@@ -25,9 +26,7 @@ class App extends Component {
     });
 
     $(".results-container").css("display","block");
-    $(".results-container").fadeTo(250, 1, function() {
-        // Animation complete.
-      });
+    $(".results-container").fadeTo(250, 1);
   }
 
   toggleStyle() {
@@ -74,6 +73,7 @@ class App extends Component {
   }
 
   handleClose(e) {
+    // closes and empties modal when background is clicked
     $(".results-container").fadeTo(250, 0, function() {
         $(".results-container").css("display","none");
         $(".results").empty();
@@ -81,6 +81,7 @@ class App extends Component {
   }
 
   handleUncheckAll(e) {
+    // unchecks all checkboxes
     $(".checkbox").prop("checked",false);
   }
 

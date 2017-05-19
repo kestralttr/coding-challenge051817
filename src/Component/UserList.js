@@ -12,7 +12,10 @@ class UserList extends Component {
   }
 
   componentDidMount() {
+
     let url = "https://jsonplaceholder.typicode.com/users";
+
+    // AJAX call requests users from API
     $.ajax({
       method:"GET",
       url: url,
@@ -29,7 +32,7 @@ class UserList extends Component {
           return 0;
         }
 
-        // state is set with sorted data
+        // data is sorted, then set within state
         this.setState({
           users:data.sort(compare)
         });
