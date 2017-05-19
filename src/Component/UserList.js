@@ -17,8 +17,21 @@ class UserList extends Component {
       method:"GET",
       url: url,
       success: (data) => {
+
+        // compare function for sorting users alphabetically by name
+        function compare(a,b) {
+          if((a.name[0]).toLowerCase() < (b.name[0]).toLowerCase()) {
+            return -1;
+          }
+          if((a.name[0]).toLowerCase() > (b.name[0]).toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        }
+
+        // state is set with sorted data
         this.setState({
-          users:data
+          users:data.sort(compare)
         });
       },
       error: (error) => {
@@ -28,23 +41,9 @@ class UserList extends Component {
   }
 
   render() {
-
-    // callback for sorting users alphabetically by name
-    function compare(a,b) {
-      if((a.name[0]).toLowerCase() < (b.name[0]).toLowerCase()) {
-        return -1;
-      }
-      if((a.name[0]).toLowerCase() > (b.name[0]).toLowerCase()) {
-        return 1;
-      }
-      return 0;
-    }
-
     let userItems;
-    let sortedUserItems;
     if(this.state.users) {
-      userItems = this.state.users.sort(compare);
-      sortedUserItems = userItems.map(function(user) {
+      userItems = this.state.users.map(function(user) {
         return(
           <UserListItem key={user.id} name={user.name} email={user.email} />
         );
@@ -52,7 +51,7 @@ class UserList extends Component {
     }
     return (
       <div className="UserList">
-        {sortedUserItems}
+        {userItems}
       </div>
     );
   }

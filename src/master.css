@@ -1,6 +1,6 @@
 
 body {
-  background-color: #e0e0e0;
+  background-color: #bfbfbf;
 }
 
 .results-container {
@@ -14,6 +14,7 @@ body {
   background-color: rgba(0,0,0,0.85);
   z-index:1000;
   text-align: center;
+  min-width: 250px;
 }
 
 .results-container h2 {
@@ -31,13 +32,6 @@ body {
   cursor: pointer;
 }
 
-/*.close-results-button {
-  position: fixed;
-  left:1px;
-  bottom:25px;
-  width:55px;
-}*/
-
 .results {
   position: fixed;
   top:100px;
@@ -49,6 +43,9 @@ body {
   z-index:2000;
   padding:50px;
   overflow-y: auto;
+  min-width:60px;
+  max-width:400px;
+  margin:0 auto;
 }
 
 .App {
@@ -57,13 +54,36 @@ body {
 
 h1 {
   text-align: center;
-  box-sizing: padding-box;
+  box-sizing: border-box;
+}
+
+.style-toggle-button {
+  position: fixed;
+  right:5px;
+  top:5px;
+  z-index: 500;
+  font-size: 11px;
+  border:1px solid grey;
+  border-radius: 5px;
+  padding:2px;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 0 0 Transparent;
+  transition-property: box-shadow;
+  transition-duration: 0.3s;
+}
+
+.style-toggle-button:hover {
+  box-shadow: 0 0 3px black;
+  transition-property: box-shadow;
+  transition-duration: 0.3s;
 }
 
 .confirm-button {
   position: fixed;
   bottom: 25px;
   z-index:50;
+  cursor: pointer;
 }
 
 .uncheckall-button {
@@ -71,6 +91,7 @@ h1 {
   bottom: 25px;
   left:70px;
   z-index:50;
+  cursor: pointer;
 }
 
 .UserList {
@@ -84,7 +105,7 @@ h1 {
 
 .UserListItem {
   width:100%;
-  background-color: pink;
+  background-color: white;
   border-top: 1px solid blue;
   position: relative;
   height:77px;
@@ -132,7 +153,7 @@ h1 {
   .results {
     left:50px;
     right:50px;
-    top:30px;
-    bottom:30px;
+    top:100px;
+    bottom:100px;
   }
 }
